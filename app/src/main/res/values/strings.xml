@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">TimePill</string>
+    <string name="name">tablle</string>
+    <string name="name_address">sample@tablle.com</string>
+    <string name="home">首页</string>
+    <string name="my_concern">我的关注</string>
+    <string name="concern_me">关注我的</string>
+    <string name="my_notebook">我的日记本</string>
+    <string name="my_profile">关于我</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
