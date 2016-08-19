@@ -16,6 +16,7 @@ public class Url {
     */
     public static final String URL_URERS_OTHRE = "https://open.timepill.net/api/users/{id}";
 
+    //日记
     /*
    * 获取首页当天所有日记
    */

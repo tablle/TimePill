@@ -12,9 +12,12 @@ import android.view.ViewGroup;
 
 import com.tablle.timepill.R;
 import com.tablle.timepill.activity.WriteNewDiaryActivity;
-import com.tablle.timepill.adapter.HomeAdapter;
-import com.tablle.timepill.helper.HomeHelper;
+import com.tablle.timepill.adapter.ViewPagerAdapter;
+import com.tablle.timepill.fragment.home.HomePageFragment;
 import com.tablle.timepill.listener.OnClickMainFABListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.ButterKnife;
 
@@ -22,8 +25,12 @@ import static butterknife.ButterKnife.findById;
 
 public class HomeFragment extends Fragment implements OnClickMainFABListener{
     private static final int REQUEST_CREATE_TASK_ACTIVITY = 1000;
+    private List<Fragment> list_fragment;                         //fragment列表
+    private List<String> list_Title;
 
     private OnFragmentInteractionListener mListener;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
     public HomeFragment() {
     }
@@ -62,19 +69,54 @@ public class HomeFragment extends Fragment implements OnClickMainFABListener{
     @Override
     public void onViewCreated(final View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        TabLayout tabLayout = findById(view, R.id.tab_layout);
-        ViewPager viewPager = findById(view, R.id.home_viewpager);
+        tabLayout = findById(view, R.id.tab_layout);
+        viewPager = findById(view, R.id.home_viewpager);
         setupViewPager(viewPager);
-        tabLayout.setupWithViewPager(viewPager);
+        //tabLayout.setupWithViewPager(viewPager);
+        //viewPager.setOffscreenPageLimit(3);
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        final HomeAdapter adapter = new HomeAdapter(getChildFragmentManager());
+        /*final HomeAdapter adapter = new HomeAdapter(getChildFragmentManager());
         adapter.addCategory(HomeHelper.HOME_PAGE);
         adapter.addCategory(HomeHelper.ATTENTION_PAGE);
         adapter.addCategory(HomeHelper.TOPIC_PAGE);
         adapter.addCategory(HomeHelper.MINE_PAGE);
-        viewPager.setAdapter(adapter);
+        viewPager.setAdapter(adapter);*/
+
+        /*HomePageFragment homePageFragment = new HomePageFragment();
+        AttentionFragment attentionFragment = new AttentionFragment();
+        TopicPageFragment topicPageFragment = new TopicPageFragment();
+        MinePageFragment minePageFragment = new MinePageFragment();*/
+
+        HomePageFragment homePageFragment = new HomePageFragment();
+        HomePageFragment attentionFragment = new HomePageFragment();
+        HomePageFragment topicPageFragment = new HomePageFragment();
+        HomePageFragment minePageFragment = new HomePageFragment();
+
+        list_fragment = new ArrayList<>();
+        list_fragment.add(homePageFragment);
+        list_fragment.add(attentionFragment);
+        list_fragment.add(topicPageFragment);
+        list_fragment.add(minePageFragment);
+
+        list_Title = new ArrayList<>();
+        list_Title.add("最新");
+        list_Title.add("关注");
+        list_Title.add("话题");
+        list_Title.add("我的");
+
+        //设置TabLayout的模式
+        //tabLayout.setTabMode(TabLayout.MODE_FIXED);
+        //为TabLayout添加tab名称
+        tabLayout.addTab(tabLayout.newTab().setText(list_Title.get(0)));
+        tabLayout.addTab(tabLayout.newTab().setText(list_Title.get(1)));
+        tabLayout.addTab(tabLayout.newTab().setText(list_Title.get(2)));
+        tabLayout.addTab(tabLayout.newTab().setText(list_Title.get(3)));
+
+        ViewPagerAdapter vpAdapter = new ViewPagerAdapter(getChildFragmentManager(),list_fragment,list_Title);
+        viewPager.setAdapter(vpAdapter);
+        tabLayout.setupWithViewPager(viewPager);
     }
 
     @Override

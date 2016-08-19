@@ -1,5 +1,6 @@
 package com.tablle.timepill.model;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -7,7 +8,7 @@ import java.util.Date;
 /**
  * Created by tong on 2016/7/27.
  */
-public class DiaryBean {
+public class DiaryBean implements Serializable {
 
     SimpleDateFormat format = new SimpleDateFormat("HH:mm");
     public int id;

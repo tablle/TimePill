@@ -10,7 +10,6 @@
         android:layout_height="match_parent"
         android:paddingTop="1dp"
         android:dividerHeight="0dp"
-        android:background="@color/mt_gray1"
         android:footerDividersEnabled="false"
         android:headerDividersEnabled="false" />
 </android.support.v4.widget.SwipeRefreshLayout>

@@ -75,7 +75,6 @@ public class MainActivity extends AppCompatActivity implements OnMakeSnackbar {
         setupNavigationView(toolbar);
         setupFloatingActionButton();
         switchFragment(R.id.home);
-
     }
 
     private void setupFloatingActionButton() {
