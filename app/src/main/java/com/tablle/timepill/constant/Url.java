@@ -27,5 +27,10 @@ public class Url {
      */
     public static final String URL_Diary_ATTENTION = "https://open.timepill.net/api/diaries/follow";
 
+    //回复
+    /*
+     * 获取该日记的回复
+     */
+    public static final String URL_Diary_COMMENT = "https://open.timepill.net/api/diaries/diary_id/comments";
 
 }

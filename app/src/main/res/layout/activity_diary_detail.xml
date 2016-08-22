@@ -130,28 +130,38 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="55dp"
                 android:background="@drawable/diary_detail_line"/>
 
-            <FrameLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginBottom="55dp">
 
                 <TextView
+                    android:id="@+id/comment_empty_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_horizontal"
                     android:text="暂无回复"
                     android:textColor="@color/mt_gray6"
-                    android:textSize="24sp"/>
+                    android:textSize="20sp"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/comment_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp">
+
+                </android.support.v7.widget.RecyclerView>
 
 
-            </FrameLayout>
+            </RelativeLayout>
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
 
-    <android.support.design.widget.FloatingActionButton
+    <!--<android.support.design.widget.FloatingActionButton
         android:id="@+id/diary_detail_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -159,7 +169,19 @@
         android:clickable="true"
         android:src="@android:drawable/ic_dialog_email"
         app:layout_anchor="@id/appbar"
-        app:layout_anchorGravity="bottom|right|end" />
+        app:layout_anchorGravity="bottom|right|end" />-->
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/diary_detail_icon"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_margin="16dp"
+        app:layout_anchor="@id/appbar"
+        app:layout_anchorGravity="bottom|right|end"
+        android:src="@drawable/small"
+        app:border_color="@android:color/white"
+        app:border_width="2dp"
+         />
 
     <TextView
         android:id="@+id/diary_detail_reply"
